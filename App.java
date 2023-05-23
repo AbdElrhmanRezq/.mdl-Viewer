@@ -1,13 +1,14 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Collections;
 
-//Get Lines, Branches BLocks
+
 public class App {
-    public static void main(String[] args) throws Exception {
+    
+    
+    public static void read(String args){
         try{
-            String fileName=args[0]; //Take the name of the .mdl file -> Given by terminal
+            String fileName=args; //Take the name of the .mdl file -> Given by terminal
             if(!fileName.endsWith(".mdl")){
                 throw new NotValidSimulinkFile("not MDL file");
             }
@@ -43,11 +44,10 @@ public class App {
 
                 String line=scanner.nextLine(); //Go to the next line
                 if(line.contains("<System>")) sys=true; 
-                else if(line.contains("</System")) sys=false;
-            
+                else if(line.contains("</System")) {sys=false; break;}
                 if(sys==true){ //Entered <System>
                     if(line.contains("<Block")) bl=true;
-                    else if(line.contains("</Block") && (bl==true)) {bl=false; system.addBlock(block);block =new Block();} //If <Block> block ended -> Add block to the system
+                    else if(line.contains("</Block") && (bl==true)) {bl=false; system.addBlock(block); block =new Block();} //If <Block> block ended -> Add block to the system
                     if(line.contains("<Line")) {ln=true;}
                     else if(line.contains("</Line") &&(ln==true)) {ln=false;system.addLine(linee,branches);linee=new Linee();branches=new ArrayList<>();} //If <Line> line ended -> Add line to the system
                     if(line.contains("<Branch")) br=true;
@@ -111,23 +111,19 @@ public class App {
                         }
 
                     }
-                    
+                    fileStream.close();
+                    //scanner.close();
 
                 }
             }
+            System.out.println("\n\n************Blocks************");
             for(int i=0;i<system.blocks.size();i++){
-                System.out.printf("No of Blocks:%d\n",i);
                 system.blocks.get(i).printBlock();
-                // for(int j=0;j<system.lines.get(i).branches.size();j++){
-                //     system.lines.get(i).printBranches();
-                // }
             }
+            System.out.println("\n\n************Lines************");
             for(int i=0;i<system.lines.size();i++){
-                System.out.printf("No of Lines:%d\n",i);
                 system.lines.get(i).printLine();
-                System.out.printf("No of Branches:%d\n",system.lines.get(i).branches.size());
-                system.lines.get(i).printBranches();
-            }   
+            }
         }
 
 
@@ -140,5 +136,8 @@ public class App {
         catch(EmptyFile ex){
             System.out.println("File is Empty");       //If the file is empty
         }
+    }
+    public static void main(String[] args) throws Exception {
+        //read(args[0]);
     }
 }
