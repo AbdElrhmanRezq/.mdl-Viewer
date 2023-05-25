@@ -12,10 +12,6 @@ public class Systemm{
         blocks.add(block);
     }
     void addLine(Linee line,ArrayList<Branch> branches){
-        System.out.println(lines.size());
-        line.printLine();
-        line.printBranches();
-
         line.addBranches(branches);
         lines.add(line);
     }

@@ -27,6 +27,7 @@ public class App {
             //System.out.println(stringBuilder);
             
             String example=stringBuilder.toString(); //Convert srtring builder to string
+            //System.out.println(example);
             Scanner scanner=new Scanner(example);
             Systemm system=new Systemm(); //Create an object of the system class
             
@@ -43,11 +44,12 @@ public class App {
             while(scanner.hasNextLine()){
 
                 String line=scanner.nextLine(); //Go to the next line
+                //System.out.println(line);
                 if(line.contains("<System>")) sys=true; 
-                else if(line.contains("</System")) {sys=false; break;}
+                else if(line.contains("</System")) {sys=false;}
                 if(sys==true){ //Entered <System>
-                    if(line.contains("<Block")) bl=true;
-                    else if(line.contains("</Block") && (bl==true)) {bl=false; system.addBlock(block); block =new Block();} //If <Block> block ended -> Add block to the system
+                    if(line.contains("<Block")) {bl=true;}
+                    else if(line.contains("</Block") && (bl==true)) {bl=false; system.addBlock(block);block =new Block();} //If <Block> block ended -> Add block to the system
                     if(line.contains("<Line")) {ln=true;}
                     else if(line.contains("</Line") &&(ln==true)) {ln=false;system.addLine(linee,branches);linee=new Linee();branches=new ArrayList<>();} //If <Line> line ended -> Add line to the system
                     if(line.contains("<Branch")) br=true;
@@ -123,6 +125,7 @@ public class App {
             System.out.println("\n\n************Lines************");
             for(int i=0;i<system.lines.size();i++){
                 system.lines.get(i).printLine();
+                system.lines.get(i).printBranches();
             }
         }
 
@@ -138,6 +141,6 @@ public class App {
         }
     }
     public static void main(String[] args) throws Exception {
-        //read(args[0]);
+        read("E:/FEASU/Spring semester 2023 - On/Advanced Programming/Project/Project New/src/Example.mdl");
     }
 }

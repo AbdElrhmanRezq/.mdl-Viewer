@@ -61,8 +61,8 @@ public class Linee {
         this.branches=branches;
     }
     void printLine(){
-        System.out.printf("Line:\n");
-        System.out.printf("Src:%d\nSrcNo:%d\nDst:%d\nDstNo:%d\nzOrder:%d\n",src,srcNo,dst,dstNo,zOrder);
+        System.out.printf("Src: %d\nSrcNo: %d\nDst: %d\nDstNo: %d\nzOrder: %d\n",src,srcNo,dst,dstNo,zOrder);
+        System.out.printf("Branches: %d\n",branches.size());
     }
     public void printBranches(){
         System.out.printf("Branches No:%d:\n",branches.size());
