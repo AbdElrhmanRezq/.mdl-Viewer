@@ -10,5 +10,6 @@
   <li>Launch the application and open a Simulink MDL file</li>
   <li>Explore the model</li>
 </ol>
+<h2>Project while running</h2>
 <img src="/src/Assets/Project.png" alt="Image Description">
 
