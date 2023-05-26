@@ -10,5 +10,5 @@
   <li>Launch the application and open a Simulink MDL file</li>
   <li>Explore the model</li>
 </ol>
-![Photo](src/Assets/Project.png)
+![Photo](/src/Assets/Project.png)
 
