@@ -1,3 +1,5 @@
+package application;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,8 +8,9 @@ import java.util.Scanner;
 public class App {
     
     
-    public static void read(String args){
-        try{
+    public static Systemm read(String args){
+    	 Systemm system=new Systemm(); //Create an object of the system class
+    	try{
             String fileName=args; //Take the name of the .mdl file -> Given by terminal
             if(!fileName.endsWith(".mdl")){
                 throw new NotValidSimulinkFile("not MDL file");
@@ -29,7 +32,7 @@ public class App {
             String example=stringBuilder.toString(); //Convert srtring builder to string
             //System.out.println(example);
             Scanner scanner=new Scanner(example);
-            Systemm system=new Systemm(); //Create an object of the system class
+           
             
             //The following varaiables are declared because of a problem that faced me
             //Tyring to use while loops and scanner.nextLine() -> It didn't work for some reason
@@ -87,6 +90,9 @@ public class App {
                                 branch.setDst(Integer.parseInt(firstNo));
                                 branch.setDstNo(Integer.parseInt(secondNo));
 
+                            }else if(line.contains("Name=\"Points\"")){
+                                String temp=line.substring(line.indexOf("\"Points\">")+9, line.indexOf("</P"));
+                                branch.setPoints(temp);
                             }
                         }
                         else if(br==false){
@@ -109,6 +115,10 @@ public class App {
                                 linee.setSrc(Integer.parseInt(firstNo));
                                 linee.setSrcNo(Integer.parseInt(secondNo));
 
+                            }else if(line.contains("Name=\"Points\"")){
+                                String temp=line.substring(line.indexOf("\"Points\">")+9, line.indexOf("</P"));
+                                linee.setPoints(temp);
+                                //System.out.println(temp);
                             }
                         }
 
@@ -118,15 +128,23 @@ public class App {
 
                 }
             }
-            System.out.println("\n\n************Blocks************");
-            for(int i=0;i<system.blocks.size();i++){
-                system.blocks.get(i).printBlock();
-            }
-            System.out.println("\n\n************Lines************");
-            for(int i=0;i<system.lines.size();i++){
-                system.lines.get(i).printLine();
-                system.lines.get(i).printBranches();
-            }
+            
+            system.getStartPoint();
+            system.getEndPoint();
+            
+            
+            
+//            System.out.println("\n\n************Blocks************");
+//            for(int i=0;i<system.blocks.size();i++){
+//                system.blocks.get(i).printBlock();
+//            }
+//            System.out.println("\n\n************Lines************");
+//            for(int i=0;i<system.lines.size();i++){
+//                //system.lines.get(i).printLine();
+//                //system.lines.get(i).printBranches();
+//            	system.lines.get(i).printPoints();
+//            	system.lines.get(i).printPoint();
+//            }
         }
 
 
@@ -139,6 +157,7 @@ public class App {
         catch(EmptyFile ex){
             System.out.println("File is Empty");       //If the file is empty
         }
+		return system;
     }
     public static void main(String[] args) throws Exception {
         read("E:/FEASU/Spring semester 2023 - On/Advanced Programming/Project/Project New/src/Example.mdl");
