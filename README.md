@@ -10,6 +10,34 @@
   <li>Launch the application and open a Simulink MDL file</li>
   <li>Explore the model</li>
 </ol>
+<h2>Team members</h2>
+<table>  
+<tr>  
+<th>Name</th>  
+<th>ID</th>  
+</tr>  
+<tr>  
+<td>Hossam Eid Ibrahim Abdallah</td>  
+<td>2000028</td>  
+</tr>  
+<tr>  
+<td>Fawzy Mohamed Zaki Bashandy</td>  
+<td>2001070</td>    
+</tr>
+<tr>  
+<td>Omar Salah Abdallah Mohamed</td>  
+<td>2001551</td>    
+</tr> 
+<tr>  
+<td>Yossef Magdy Shebl Mohamed</td>  
+<td>2001461</td>    
+</tr> 
+<tr>  
+<td>Abdelrhman Ahmed Rezk Ahmed</td>  
+<td>2001067</td>    
+</tr>
+</table>
+
 <h2>Project while running</h2>
 <img src="/src/Assets/Project.png" alt="Image Description">
 
